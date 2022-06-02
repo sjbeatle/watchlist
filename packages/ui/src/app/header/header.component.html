@@ -1,0 +1,9 @@
+<h1>Watchlist</h1>
+<button class="wl-header__add-media-btn" (click)="isAdd = !isAdd">
+  <app-plus></app-plus>
+</button>
+<app-add-media class="wl-header__add-media" *ngIf="isAdd">
+  <button class="wl-header__add-media-btn" (click)="isAdd = !isAdd">
+    <app-close></app-close>
+  </button>
+</app-add-media>

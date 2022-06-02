@@ -1,0 +1,29 @@
+<article
+  class="wl-box"
+  [class.wl-box--completed]="item.status === 2"
+  [class.wl-box--watching]="item.status === 1"
+  (click)="showDetails($event)"
+  (dblclick)="toggleWatched($event)"
+>
+  <h2 class="wl-box__title" [title]="item.title">{{item.title}}</h2>
+  <div *ngIf="premiere && item.status === 0" class="wl-box__premiere">{{premiere}}</div>
+  <ng-container [ngSwitch]="item.type">
+    <app-movie *ngSwitchCase="0" class="wl-box__type-icon"></app-movie>
+    <app-series *ngSwitchCase="1" class="wl-box__type-icon"></app-series>
+    <app-concert *ngSwitchCase="3" class="wl-box__type-icon"></app-concert>
+    <app-special *ngSwitchCase="2" class="wl-box__type-icon"></app-special>
+    <app-documentary *ngSwitchCase="4" class="wl-box__type-icon"></app-documentary>
+    <app-trailer *ngSwitchCase="5" class="wl-box__type-icon"></app-trailer>
+  </ng-container>
+  <ng-container [ngSwitch]="item.service">
+    <app-netflix *ngSwitchCase="1" class="wl-box__service-icon"></app-netflix>
+    <app-disney-plus *ngSwitchCase="0" class="wl-box__service-icon"></app-disney-plus>
+    <app-apple-tv-plus *ngSwitchCase="4" class="wl-box__service-icon"></app-apple-tv-plus>
+    <app-apple-tv *ngSwitchCase="3" class="wl-box__service-icon"></app-apple-tv>
+    <app-youtube *ngSwitchCase="7" class="wl-box__service-icon"></app-youtube>
+    <app-hbo-max *ngSwitchCase="5" class="wl-box__service-icon"></app-hbo-max>
+    <app-hulu *ngSwitchCase="6" class="wl-box__service-icon"></app-hulu>
+    <app-amazon-prime-video *ngSwitchCase="2" class="wl-box__service-icon"></app-amazon-prime-video>
+  </ng-container>
+  <app-done-icon class="wl-box__done" *ngIf="item.status === 2"></app-done-icon>
+</article>

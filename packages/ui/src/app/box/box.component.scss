@@ -1,0 +1,78 @@
+:host {
+  background-size: cover;
+  background-position-y: center;
+  background-blend-mode: lighten;
+  position: relative;
+}
+
+.wl-box {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 250ms;
+
+  &:hover {
+    background-color: rgba(250,250,250,0);
+  }
+
+  &__title {
+    background-color: rgba(0,0,0,.30);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: .25rem .5rem;
+    color: white;
+  }
+
+  &__premiere {
+    font-size: 3rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: .25rem .5rem;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+  }
+
+  &__service-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__type-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &--watching {
+    background-color: rgba(250,250,250,.30);
+  }
+
+  &--completed {
+    background-color: rgba(250,250,250,.80);
+
+    .wl-box {
+      &__title,
+      &__service-icon,
+      &__type-icon {
+        opacity: .5;
+      }
+
+      &__done {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        opacity: .25;
+      }
+    }
+  }
+}
+

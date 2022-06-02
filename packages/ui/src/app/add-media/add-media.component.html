@@ -1,0 +1,48 @@
+<ng-content></ng-content>
+<h2 class="wl-add-media__title">Add Media</h2>
+<form class="wl-add-media" (ngSubmit)="foo($event)">
+  <label for="service">Service</label><br />
+  <label class="service-label" [class.service-label--active]="service === '1'"><input [(ngModel)]="service" type="radio" name="service" value="1" /><app-netflix class="service-radio"></app-netflix></label>
+  <label class="service-label" [class.service-label--active]="service === '0'"><input [(ngModel)]="service" type="radio" name="service" value="0" /><app-disney-plus class="service-radio"></app-disney-plus></label>
+  <label class="service-label" [class.service-label--active]="service === '2'"><input [(ngModel)]="service" type="radio" name="service" value="2" /><app-amazon-prime-video class="service-radio"></app-amazon-prime-video></label>
+  <label class="service-label" [class.service-label--active]="service === '3'"><input [(ngModel)]="service" type="radio" name="service" value="3" /><app-apple-tv class="service-radio"></app-apple-tv></label>
+  <label class="service-label" [class.service-label--active]="service === '4'"><input [(ngModel)]="service" type="radio" name="service" value="4" /><app-apple-tv-plus class="service-radio"></app-apple-tv-plus></label>
+  <label class="service-label" [class.service-label--active]="service === '7'"><input [(ngModel)]="service" type="radio" name="service" value="7" /><app-youtube class="service-radio"></app-youtube></label>
+  <label class="service-label" [class.service-label--active]="service === '6'"><input [(ngModel)]="service" type="radio" name="service" value="6" /><app-hulu class="service-radio"></app-hulu></label>
+  <label class="service-label" [class.service-label--active]="service === '5'"><input [(ngModel)]="service" type="radio" name="service" value="5" /><app-hbo-max class="service-radio"></app-hbo-max></label>
+  <br />
+  <br />
+  <label for="search">Search</label><br />
+  <input type="search" placeholder="Media title" name="s" id="search" [(ngModel)]="title" />
+  <br /><input type="checkbox" value="useId" [(ngModel)]="useId" name="useId" /> Use IMDB ID?
+  <br />
+  <br />
+  <label for="search">Premiere?</label><br />
+  <input type="date" name="dtm" id="dtm" [(ngModel)]="dtm" />
+  <br />
+  <br />
+  <label for="type">Override type?</label><br />
+  <select name="type" id="type" [(ngModel)]="type">
+    <option value="" selected>select type</option>
+    <option value="0">movie</option>
+    <option value="1">series</option>
+    <option valuee="2">special</option>
+    <option value="3">concert</option>
+    <option value="4">documentary</option>
+    <option value="5">trailer</option>
+  </select>
+  <br />
+  <br /><button type="submit">submit</button>
+  <ul class="wl-add-media__list" *ngIf="results.length">
+    <li *ngFor="let item of results">
+      <h2>
+        <button>
+          <app-plus (click)="add($event, item)"></app-plus>
+        </button>
+        {{item.title}} ({{item.year}})
+      </h2>
+      <p>{{item.titleType}}</p>
+      <img *ngIf="item.image" width="100" [src]="item.image.url" />
+    </li>
+  </ul>
+</form>

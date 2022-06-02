@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  margin-bottom: 10px;
+  position: sticky;
+  background: rgba(#333, .7);
+  top: 0;
+  z-index: 9999;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  flex: 1 1 auto;
+}
+
+.wl-header {
+  &__add-media-btn {
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__add-media {
+    background-color: rgba(255,255,255,.9);
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+}

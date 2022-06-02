@@ -1,0 +1,45 @@
+.wl-add-media {
+  padding: 1rem;
+
+  &__title {
+    text-align: center;
+    margin: 0;
+    padding: .5rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  &__list {
+    height: 350px;
+    overflow-y: scroll;
+  }
+}
+
+label {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.service-radio {
+  width: 30px;
+  height: 30px;
+
+  ::ng-deep {
+    svg {
+      width: 30px;
+    }
+  }
+}
+
+.service-label {
+  display: inline-block;
+  cursor: pointer;
+
+  &--active {
+    outline: 2px solid green;
+  }
+
+  input {
+    display: none;
+  }
+}

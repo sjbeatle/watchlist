@@ -1,0 +1,15 @@
+<app-header></app-header>
+<main>
+  <h2>Watching</h2>
+  <section>
+    <app-box *ngFor="let item of watching" [item]="item"></app-box>
+  </section>
+  <h2>Unwatched</h2>
+  <section>
+    <app-box *ngFor="let item of unwatched" [item]="item"></app-box>
+  </section>
+  <h2>Watched</h2>
+  <section>
+    <app-box *ngFor="let item of watched" [item]="item"></app-box>
+  </section>
+</main>
