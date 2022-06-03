@@ -1,7 +1,7 @@
 <ng-content></ng-content>
 <h2 class="wl-add-media__title">Add Media</h2>
 <form class="wl-add-media" (ngSubmit)="foo($event)">
-  <label for="service">Service</label><br />
+  <label class="label" for="service">Providing Service</label>
   <label class="service-label" [class.service-label--active]="service === '8'"><input [(ngModel)]="service" type="radio" name="service" value="8" /><app-amc class="service-radio"></app-amc></label>
   <label class="service-label" [class.service-label--active]="service === '1'"><input [(ngModel)]="service" type="radio" name="service" value="1" /><app-netflix class="service-radio"></app-netflix></label>
   <label class="service-label" [class.service-label--active]="service === '0'"><input [(ngModel)]="service" type="radio" name="service" value="0" /><app-disney-plus class="service-radio"></app-disney-plus></label>
@@ -16,37 +16,37 @@
   <label class="service-label" [class.service-label--active]="service === '9'"><input [(ngModel)]="service" type="radio" name="service" value="9" /><app-daily-wire class="service-radio"></app-daily-wire></label>
   <br />
   <br />
-  <label for="search">Search</label><br />
-  <input type="search" placeholder="Media title" name="s" id="search" [(ngModel)]="title" />
+  <label class="label" for="search">Title</label>
+  <input type="search" placeholder="Show or movie title" name="s" id="search" [(ngModel)]="title" />
   <br /><input type="checkbox" value="useId" [(ngModel)]="useId" name="useId" /> Use IMDB ID?
   <br />
   <br />
-  <label for="search">Premiere?</label><br />
+  <label class="label" for="search">Premiere?</label>
   <input type="date" name="dtm" id="dtm" [(ngModel)]="dtm" />
   <br />
   <br />
-  <label for="type">Override type?</label><br />
+  <label class="label" for="type">Type?</label>
   <select name="type" id="type" [(ngModel)]="type">
     <option value="" selected>select type</option>
-    <option value="0">movie</option>
-    <option value="1">series</option>
-    <option valuee="2">special</option>
-    <option value="3">concert</option>
-    <option value="4">documentary</option>
-    <option value="5">trailer</option>
+    <option value="0">Movie</option>
+    <option value="1">Series</option>
+    <option valuee="2">Special</option>
+    <option value="3">Concert</option>
+    <option value="4">Documentary</option>
+    <option value="5">Trailer</option>
   </select>
   <br />
-  <br /><button type="submit">submit</button>
+  <br /><button type="submit">Search</button>
   <ul class="wl-add-media__list" *ngIf="results.length">
-    <li *ngFor="let item of results">
+    <li
+      *ngFor="let item of results"
+      (click)="add($event, item)"
+      [ngStyle]="{ backgroundImage: item && item.image && item.image.url ? 'url('+item.image.url+')' : null}"
+      >
       <h2>
-        <button>
-          <app-plus (click)="add($event, item)"></app-plus>
-        </button>
-        {{item.title}} ({{item.year}})
+        {{item.title}}
       </h2>
-      <p>{{item.titleType}}</p>
-      <img *ngIf="item.image" width="100" [src]="item.image.url" />
+      <p>{{item.year}} {{item.titleType}}</p>
     </li>
   </ul>
 </form>

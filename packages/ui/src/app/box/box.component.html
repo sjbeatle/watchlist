@@ -2,10 +2,12 @@
   class="wl-box"
   [class.wl-box--completed]="item.status === 2"
   [class.wl-box--watching]="item.status === 1"
-  (click)="showDetails($event)"
   (dblclick)="toggleWatched($event)"
 >
-  <h2 class="wl-box__title" [title]="item.title">{{item.title}}</h2>
+  <div class="wl-box__header">
+    <h2 class="wl-box__title" [title]="item.title">{{item.title}}</h2>
+    <button (click)="delete()"><app-trash></app-trash></button>
+  </div>
   <div *ngIf="premiere && item.status === 0" class="wl-box__premiere">{{premiere}}</div>
   <ng-container [ngSwitch]="item.type">
     <app-movie *ngSwitchCase="0" class="wl-box__type-icon"></app-movie>

@@ -26,7 +26,8 @@ export class BoxComponent {
     if (this.allowAnyClick) {
       this.allowSingleClick = false;
       this.allowAnyClick = false;
-      const status = this.item.status === 2 ? 0 : 2;
+      const next = this.item.status + 1;
+      const status = next > 2 ? 0 : next;
 
       await fetch(`https://mariasbasement.com/v1/media/${this.item._id}`, {
         method: 'PUT',
@@ -44,27 +45,18 @@ export class BoxComponent {
     }
   }
 
-  showDetails(e) {
-    if (this.item.status === 1) {
-      return;
-    }
-
-    setTimeout(async () => {
+  async delete() {
+    const confirmation = confirm("R U Sure?");
+    if (confirmation) {
       if (this.allowAnyClick && this.allowSingleClick) {
         this.allowAnyClick = false;
         await fetch(`https://mariasbasement.com/v1/media/${this.item._id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            status: 1,
-          }),
+          method: 'DELETE',
         });
       }
       this.allowAnyClick = true;
       document.location.reload();
-    }, 300);
+    }
   }
 
   @HostBinding('style.background-image') get backgroundImage() {

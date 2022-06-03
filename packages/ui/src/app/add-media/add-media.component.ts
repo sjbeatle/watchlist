@@ -16,6 +16,7 @@ export class AddMediaComponent implements OnInit {
   dtm: string = "";
 
   async foo(e) {
+    this.results = [];
     const res = await fetch(`https://mariasbasement.com/v1/omdb?${this.useId ? 'tconst' : 'q'}=${this.title}`);
     const json = await res.json();
     this.results = json.filter(i => !(i.name || i.episode));

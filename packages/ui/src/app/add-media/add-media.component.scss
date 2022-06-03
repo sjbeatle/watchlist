@@ -1,6 +1,11 @@
 .wl-add-media {
   padding: 1rem;
 
+  .label {
+    display: block;
+    margin-bottom: .25rem;
+  }
+
   &__title {
     text-align: center;
     margin: 0;
@@ -9,8 +14,49 @@
   }
 
   &__list {
-    height: 350px;
-    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px;
+    margin: 3rem 0 0 0;
+    padding: 0;
+    list-style: none;
+
+    > * {
+      box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
+      background-size: cover;
+      background-position-y: center;
+      background-blend-mode: lighten;
+      height: 100%;
+      cursor: pointer;
+
+      &::before {
+        float: left;
+        padding-top: 100%;
+        content: "";
+      }
+
+      &*::after {
+        display: block;
+        content: "";
+        clear: both;
+      }
+
+      h2, p {
+        background-color: rgba(0,0,0,.30);
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.1rem;
+        font-family: 'Open Sans Condensed', sans-serif;
+        padding: .25rem .5rem;
+        color: white;
+      }
+
+      p {
+        font-size: .8rem;
+      }
+    }
   }
 }
 

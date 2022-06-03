@@ -30,9 +30,11 @@ import { CloseComponent } from './icon/close/close.component';
 import { FormsModule } from '@angular/forms';
 import { ParamountComponent } from './streamer/paramount/paramount.component';
 import { DailyWireComponent } from './streamer/daily-wire/daily-wire.component';
+import { TrashComponent } from './icon/trash/trash.component';
 
 @NgModule({
   declarations: [
+    TrashComponent,
     AMCComponent,
     PeacockComponent,
     ParamountComponent,
