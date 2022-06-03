@@ -15,6 +15,7 @@ export const Prefixes = [
 export class AppComponent implements OnInit {
   title = 'watchlist';
   watchList: IMedia[] = [];
+  serviceFilter = -1;
 
   ngOnInit() {
     this.getWatchlist();
@@ -25,7 +26,12 @@ export class AppComponent implements OnInit {
       method: 'GET',
     });
     const json = await response.json();
-    this.watchList = this.sort(json as IMedia[]);
+    const sortedJson = this.sort(json as IMedia[]);
+    if (this.serviceFilter > -1) {
+      this.watchList = sortedJson.filter(a => a.service === this.serviceFilter)
+    } else {
+      this.watchList = sortedJson;
+    }
   }
 
   get watching(): IMedia[] {
@@ -33,35 +39,38 @@ export class AppComponent implements OnInit {
   }
 
   get unwatched(): IMedia[] {
-    // prioritize trailers
-    return this.trailerPriority(this.premierePriority(this.watchList.filter(a => a.status === 0)));
+    return this.watchList.filter(a => a.status === 0);
   }
 
   get watched(): IMedia[] {
     return this.watchList.filter(a => a.status === 2);
   }
 
-  private trailerPriority(list: IMedia[] = []): IMedia[] {
-    return list
-      .sort((a) => a.type === 5 ? -1 : 1);
+  get unwatchedTrailer(): IMedia[] {
+    return this.unwatched.filter(a => a.type === 5);
   }
 
-  private premierePriority(list: IMedia[] = []): IMedia[] {
-    return list
-      .sort((a, b) => {
-        if (!a.premiere) {
-          return 1;
-        }
+  get unwatchedPremiere(): IMedia[] {
+    return this.unwatched.filter(a => a.type !== 5 && !!a.premiere);
+  }
 
-        const aPremiere = new Date(a.premiere);
-        const bPremiere = new Date(b.premiere);
+  get unwatchedNonPremiere(): IMedia[] {
+    return this.unwatched.filter(a => a.type !== 5 && !a.premiere);
+  }
+
+  get premierePriority(): IMedia[] {
+    return [
+      ...this.unwatchedTrailer,
+      ...this.unwatchedPremiere.sort((a, b) => {
+        const aPremiere = new Date(a.premiere).getTime();
+        const bPremiere = new Date(b.premiere).getTime();
 
         return aPremiere === bPremiere
           ? 0
-          : aPremiere > bPremiere
-            ? 1
-            : -1;
-      });
+          : aPremiere - bPremiere;
+      }),
+      ...this.unwatchedNonPremiere,
+    ];
   }
 
   private sort(results: IMedia[] = []): IMedia[] {
@@ -87,5 +96,16 @@ export class AppComponent implements OnInit {
             ? 1
             : -1;
       });
+  }
+
+  filter(id: number) {
+    console.log('>> TESTING >> id', id);
+    if (id === this.serviceFilter) {
+      this.serviceFilter = -1;
+    } else {
+      this.serviceFilter = id;
+    }
+
+    this.getWatchlist();
   }
 }

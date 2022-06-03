@@ -10,6 +10,8 @@ import { NetflixComponent } from './streamer/netflix/netflix.component';
 import { AppleTvPlusComponent } from './streamer/apple-tv-plus/apple-tv-plus.component';
 import { HboMaxComponent } from './streamer/hbo-max/hbo-max.component';
 import { AppleTvComponent } from './streamer/apple-tv/apple-tv.component';
+import { AMCComponent } from './streamer/amc/amc.component';
+import { PeacockComponent } from './streamer/peacock/peacock.component';
 import { HuluComponent } from './streamer/hulu/hulu.component';
 import { AmazonPrimeVideoComponent } from './streamer/amazon-prime-video/amazon-prime-video.component';
 import { MovieComponent } from './type/movie/movie.component';
@@ -26,9 +28,15 @@ import { PlusComponent } from './icon/plus/plus.component';
 import { AddMediaComponent } from './add-media/add-media.component';
 import { CloseComponent } from './icon/close/close.component';
 import { FormsModule } from '@angular/forms';
+import { ParamountComponent } from './streamer/paramount/paramount.component';
+import { DailyWireComponent } from './streamer/daily-wire/daily-wire.component';
 
 @NgModule({
   declarations: [
+    AMCComponent,
+    PeacockComponent,
+    ParamountComponent,
+    DailyWireComponent,
     AppComponent,
     BoxComponent,
     DisneyPlusComponent,

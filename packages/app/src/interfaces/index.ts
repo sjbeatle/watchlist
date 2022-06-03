@@ -53,6 +53,10 @@ export enum Service {
   HBO_MAX = 5,
   HULU = 6,
   YOUTUBE = 7,
+  AMC = 8,
+  DAILY_WIRE = 9,
+  PEACOCK = 10,
+  PARAMOUNT = 11,
 }
 
 export enum Media {

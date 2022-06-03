@@ -1,4 +1,20 @@
 <app-header></app-header>
+<h2 style="text-align:center;font-size:1rem;">Filter by:</h2>
+<div class="filter">
+  <button (click)="filter(1)"><app-netflix class="wl-box__service-icon"></app-netflix></button>
+  <button (click)="filter(0)"><app-disney-plus class="wl-box__service-icon"></app-disney-plus></button>
+  <button (click)="filter(4)"><app-apple-tv-plus class="wl-box__service-icon"></app-apple-tv-plus></button>
+  <button (click)="filter(3)"><app-apple-tv class="wl-box__service-icon"></app-apple-tv></button>
+  <button (click)="filter(7)"><app-youtube class="wl-box__service-icon"></app-youtube></button>
+  <button (click)="filter(5)"><app-hbo-max class="wl-box__service-icon"></app-hbo-max></button>
+  <button (click)="filter(6)"><app-hulu class="wl-box__service-icon"></app-hulu></button>
+  <button (click)="filter(8)"><app-amc class="wl-box__service-icon"></app-amc></button>
+  <button (click)="filter(10)"><app-peacock class="wl-box__service-icon"></app-peacock></button>
+  <button (click)="filter(11)"><app-paramount class="wl-box__service-icon"></app-paramount></button>
+  <button (click)="filter(2)"><app-amazon-prime-video class="wl-box__service-icon"></app-amazon-prime-video></button>
+  <button (click)="filter(9)"><app-daily-wire class="wl-box__service-icon"></app-daily-wire></button>
+  <button (click)="filter(-1)">clear</button>
+</div>
 <main>
   <h2>Watching</h2>
   <section>
@@ -6,7 +22,7 @@
   </section>
   <h2>Unwatched</h2>
   <section>
-    <app-box *ngFor="let item of unwatched" [item]="item"></app-box>
+    <app-box *ngFor="let item of premierePriority" [item]="item"></app-box>
   </section>
   <h2>Watched</h2>
   <section>
