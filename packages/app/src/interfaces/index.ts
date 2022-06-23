@@ -125,3 +125,8 @@ export interface IMDB8Response {
   year: number;
   principals: IMDB8Principles[]
 }
+
+export interface ICovers {
+  artist: string;
+  songs: string[];
+}

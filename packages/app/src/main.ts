@@ -17,10 +17,21 @@ import {
 // } from './middleware';
 // import path from 'path';
 import { isDev } from './utilities';
-import { mediaGetAllController } from './controllers/mediaGetAllController';
-import { mediaPostController } from './controllers/mediaPostController';
-import { mediaDeleteController } from './controllers/mediaDeleteController';
-import { mediaPutController } from './controllers/mediaPutController';
+
+import {
+  mediaGetAllController,
+  mediaPostController,
+  mediaDeleteController,
+  mediaPutController,
+  CoversGetAllController,
+  CoversGetArtistController,
+  CoversPutArtistController,
+  CoversPostArtistController,
+  CoversDeleteArtistController,
+  CoversGetSongController,
+  CoversPutSongController,
+  CoversDeleteSongController,
+} from './controllers';
 
 if (isDev) {
   dotenv.config({ path: './.env' });
@@ -65,13 +76,24 @@ app.use(new HealthRouter().makeRouter());
 -----------------------------------------------*/
 // app.use(new ProfileRouter().makeRouter());
 
-/* App routes
+/* Media routes
 -----------------------------------------------*/
 app.use(new AppRouter().makeRouter());
 app.get('/v1/media', mediaGetAllController);
 app.post('/v1/media', mediaPostController);
 app.delete('/v1/media/:id', mediaDeleteController);
 app.put('/v1/media/:id', mediaPutController);
+
+/* Covers routes
+-----------------------------------------------*/
+app.get('/covers', CoversGetAllController);
+app.get('/covers/:id', CoversGetArtistController);
+app.put('/covers/:id', CoversPutArtistController);
+app.post('/covers', CoversPostArtistController);
+app.delete('/covers/:id', CoversDeleteArtistController);
+app.get('/covers/:id/song', CoversGetSongController);
+app.put('/covers/:id/song', CoversPutSongController);
+app.delete('/covers/:id/song/:song', CoversDeleteSongController);
 
 /* Start the Server
 -----------------------------------------------*/
@@ -99,4 +121,3 @@ if (isDev) { // development
     console.log(`server started at http://localhost:${port}`);
   });
 }
-

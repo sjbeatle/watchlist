@@ -1,4 +1,16 @@
 export * from './app.controller';
 // export * from './auth.controller';
 export * from './health.controller';
+export * from './mediaDeleteController';
+export * from './mediaGetAllController';
+export * from './mediaPostController';
+export * from './mediaPutController';
 // export * from './watson-discovery.controller';
+export * from './coversPostArtistController';
+export * from './coversDeleteArtistController';
+export * from './coversGetAllController';
+export * from './coversGetArtistController';
+export * from './coversPutSongController';
+export * from './coversDeleteSongController';
+export * from './coversGetSongController';
+export * from './coversPutArtistController';
