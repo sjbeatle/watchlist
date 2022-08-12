@@ -14,3 +14,8 @@ export * from './coversPutSongController';
 export * from './coversDeleteSongController';
 export * from './coversGetSongController';
 export * from './coversPutArtistController';
+export * from './venuePostController';
+export * from './venueGetController';
+export * from './venueGetAllController';
+export * from './performancePostController';
+export * from './performanceGetAllController';

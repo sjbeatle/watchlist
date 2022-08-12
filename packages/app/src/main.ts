@@ -31,6 +31,11 @@ import {
   CoversGetSongController,
   CoversPutSongController,
   CoversDeleteSongController,
+  venuePostController,
+  venueGetController,
+  venueGetAllController,
+  performancePostController,
+  performanceGetAllController,
 } from './controllers';
 
 if (isDev) {
@@ -94,6 +99,14 @@ app.delete('/covers/:id', CoversDeleteArtistController);
 app.get('/covers/:id/song', CoversGetSongController);
 app.put('/covers/:id/song', CoversPutSongController);
 app.delete('/covers/:id/song/:song', CoversDeleteSongController);
+
+/* Performances routes
+-----------------------------------------------*/
+app.post('/venue', venuePostController);
+app.get('/venue', venueGetAllController);
+app.get('/venue/:id', venueGetController);
+app.post('/performance', performancePostController);
+app.get('/performance', performanceGetAllController);
 
 /* Start the Server
 -----------------------------------------------*/

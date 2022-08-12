@@ -130,3 +130,41 @@ export interface ICovers {
   artist: string;
   songs: string[];
 }
+
+export enum State {
+  NY = 'NY',
+  CT = 'CT',
+  PA = 'PA',
+  NJ = 'NJ',
+  MA = 'MA',
+  NH = 'NH',
+}
+
+export enum Meridian {
+  ANTE = 'am',
+  POST = 'pm',
+}
+
+export interface IVenue {
+  _id: string;
+  name: string;
+  phone: string;
+  email: string;
+  website: string;
+  addressLineOne: string;
+  addressLineTwo: string;
+  city: string;
+  state: State;
+  zip: string;
+}
+
+export interface IPerformance {
+  venue: IVenue;
+  date: number;
+  timeStart: string;
+  timeEnd: string;
+  notes: string;
+  revenue: number;
+  coverCharge: number;
+  isCanceled: boolean;
+}
