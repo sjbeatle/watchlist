@@ -18,4 +18,5 @@ export * from './venuePostController';
 export * from './venueGetController';
 export * from './venueGetAllController';
 export * from './performancePostController';
+export * from './performancePutController';
 export * from './performanceGetAllController';

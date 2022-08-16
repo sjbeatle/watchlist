@@ -165,6 +165,7 @@ export interface IPerformance {
   timeEnd: string;
   notes: string;
   revenue: number;
+  tips: number;
   coverCharge: number;
   isCanceled: boolean;
 }

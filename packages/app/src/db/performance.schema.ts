@@ -12,7 +12,7 @@ export const PerformanceSchema: Schema = new Schema({
     unique: false,
   },
   date: {
-    type: String,
+    type: Date,
     required: true,
     unique: false,
   },
@@ -43,6 +43,11 @@ export const PerformanceSchema: Schema = new Schema({
   },
   isCanceled: {
     type: Boolean,
+    required: false,
+    unique: false,
+  },
+  tips: {
+    type: Number,
     required: false,
     unique: false,
   },

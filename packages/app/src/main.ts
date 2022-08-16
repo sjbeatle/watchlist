@@ -36,6 +36,7 @@ import {
   venueGetAllController,
   performancePostController,
   performanceGetAllController,
+  performancePutController,
 } from './controllers';
 
 if (isDev) {
@@ -107,6 +108,7 @@ app.get('/venue', venueGetAllController);
 app.get('/venue/:id', venueGetController);
 app.post('/performance', performancePostController);
 app.get('/performance', performanceGetAllController);
+app.put('/performance/:id', performancePutController);
 
 /* Start the Server
 -----------------------------------------------*/
